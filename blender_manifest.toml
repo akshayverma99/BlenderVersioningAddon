@@ -1,0 +1,16 @@
+schema_version = "1.0.0"
+
+id = "mesh_versioning"
+version = "0.1.0"
+name = "Mesh Versioning"
+tagline = "Git-like named snapshots of mesh data"
+maintainer = "Akshay <akshay99@hey.com>"
+type = "add-on"
+
+# Supported Blender version range. Extensions ignore bl_info; this is the
+# authoritative metadata.
+blender_version_min = "4.2.0"
+
+license = ["SPDX:GPL-3.0-or-later"]
+
+tags = ["Mesh", "Modeling"]
