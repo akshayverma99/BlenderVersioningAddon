@@ -1,46 +1,30 @@
-# Mesh Versioning
+# Blender Versioning
 
-A Blender 4.2+ add-on that gives a mesh object a git-like history of named
-snapshots. Box-model something, **commit** a version, keep editing (loop cuts for
-a sub-d cage), commit again, and freely **checkout** any earlier snapshot.
+A Blender 4.2+ alternative to saving copies of objects by duplicating them 
 
-## How it works
 
-Each commit copies the object's **Mesh datablock** (`obj.data`) into a new
-datablock kept alive with a *fake user*, and stores a pointer to it on the object.
-Checkout assigns a fresh **copy** of a snapshot back into `obj.data`, so the
-snapshot itself is never mutated by later edits. Everything serializes into the
-`.blend`.
+## How to install
 
-**Snapshot scope:** mesh geometry only — verts/edges/faces plus UVs, vertex
-colors, and creases that live on the mesh. Modifiers (Subdivision Surface),
-material slots, and object transform stay on the live object and persist across
-checkouts, which is exactly what a sub-d cage workflow wants.
+1. Click the green **Code** button above and choose **Download ZIP**.
+2. In Blender, go to Edit > Preferences > Get Extensions > **Install from Disk...**
+   and pick the zip.
+3. The panel appears in the 3D viewport sidebar (press <kbd>N</kbd>) under the
+   **Versions** tab.
 
-## Install
+## How to use
 
-Blender → Edit → Preferences → Get Extensions → **Install from Disk…** and pick
-this folder (or a zip of it). The panel appears in the 3D viewport sidebar
-(press <kbd>N</kbd>) under the **Versions** tab.
-
-## Usage
-
-1. Select a mesh object, in **Object Mode**.
-2. **+** (Commit) — name and save the current mesh as a version.
+1. Select a mesh object in **Object Mode**.
+2. **+** (Commit) names and saves the current mesh as a version.
 3. Keep modeling, commit again.
-4. Select a version and **Checkout** to load it (discards uncommitted edits).
+4. Select a version and **Checkout** to load it (this discards uncommitted edits).
 5. **Update** amends the selected version with the current mesh; **Rename** and
    **−** (Delete) manage the list.
 
 The radio icon marks the version currently checked out.
 
-## Notes
+## Limitations
 
-- Operators require **Object Mode** — you can't swap mesh data mid-edit.
-- Every commit is a full mesh copy, so the `.blend` grows with history. Deleting a
-  version releases its fake user so it's reclaimed on the next save / orphan purge.
-
-## Out of scope (v1)
-
-Modifier/material snapshotting, branching history, version diffing, and per-version
-thumbnails.
+- Snapshots only cover mesh data. Modifiers, materials, and object transform stay
+  on the live object and aren't saved or restored.
+- The add-on only works in Object Mode.
+- Each commit is a full copy of the mesh, so the `.blend` grows with your history.
