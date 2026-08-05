@@ -14,7 +14,7 @@ A Blender 4.2+ alternative to saving copies of objects by duplicating them
 ## How to use
 
 1. Select a mesh object in **Object Mode**.
-2. **+** (Commit) names and saves the current mesh as a version.
+2. **+* (Commit) names and saves the current mesh as a version.
 3. Keep modeling, commit again.
 4. Select a version and **Checkout** to load it (this discards uncommitted edits).
 5. **Update** amends the selected version with the current mesh; **Rename** and
